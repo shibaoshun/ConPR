@@ -1,0 +1,9 @@
+function  demobm3d(  )
+y = im2double(imread('Cameraman256.png')); 
+sigma=25;
+ z = y + sigma/255*randn(size(y));%这里用噪声除以255的原因是将噪声限制在0到1内，由于信号也是在这个范围内的
+ profile='lc';
+ print_to_screen=1;
+ %y = denoising_dwt(z);
+ 
+ [PSNR, y_est] = BM3D(y, z, sigma, profile, print_to_screen);
